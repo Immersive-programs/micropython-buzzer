@@ -27,7 +27,7 @@ class Buzzer:
     """Tone playback"""
     
     def __init__(self, pin):
-        self.beeper = PWM(pin)
+        self.buzzer = PWM(pin)
         self.beeptimer = Timer()
         self.beeps = []
         self.isenabled = True
@@ -40,14 +40,14 @@ class Buzzer:
                 self.isbeeping = True
                 self.beeptimer.init(mode=Timer.ONE_SHOT, period=self.beeps[0][1], callback=lambda x: self.__beep())
                 if self.beeps[0][0] <= 20:
-                    self.beeper.duty_u16(1)
+                    self.buzzer.duty_u16(1)
                 else:
-                    self.beeper.duty_u16(32768)
-                self.beeper.freq(self.beeps[0][0])
+                    self.buzzer.duty_u16(32768)
+                self.buzzer.freq(self.beeps[0][0])
                 del self.beeps[0]
             else:
-                self.beeper.freq(20)
-                self.beeper.duty_u16(0)
+                self.buzzer.freq(20)
+                self.buzzer.duty_u16(0)
                 self.beeptimer.deinit()
                 self.isbeeping = False
 
@@ -58,5 +58,5 @@ class Buzzer:
            self.__beep()
                     
     def deinit(self):
-        self.beeper.deinit()
+        self.buzzer.deinit()
         self.beeptimer.deinit()
