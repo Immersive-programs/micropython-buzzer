@@ -21,7 +21,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Сreated by Immersive-programs:
-#   github: https://github.com/Immersive-programs/micropython-toneplayback
+#   github: https://github.com/Immersive-programs/micropython-buzzer
 from machine import PWM, Timer
 class Buzzer:
     """Tone playback"""
